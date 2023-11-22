@@ -14,12 +14,12 @@ const pagination = document.querySelector('[data-js="pagination"]');
 const maxPage = 1;
 const page = 1;
 const searchQuery = "";
-
+let index = 1;
 //fetch API
 let charactersFetched;
-async function fetchCharacters() {
+let fetchUrl = `https://rickandmortyapi.com/api/character/?page=${index}`;
+async function fetchCharacters(index) {
   try {
-    const fetchUrl = `https://rickandmortyapi.com/api/character`;
     const response = await fetch(fetchUrl);
     const data = await response.json();
     charactersFetched = data;
@@ -28,8 +28,21 @@ async function fetchCharacters() {
   }
   return;
 }
-await fetchCharacters();
-console.log("exdata", charactersFetched, "card2", charactersFetched.results[2]);
+await fetchCharacters(index);
+console.log(
+  "exdata",
+  charactersFetched,
+  "card2",
+  charactersFetched.results[2].name
+);
+
+function twentyCards() {
+  result.forEach((card) => {
+    createCharacterCard(card);
+  });
+}
+
+twentyCards();
 // Use your knowledge about fetching to get the first 20 characters from the API. You can find the correct API endpoint in the docs.
 // Import the createCharacterCard function.
 // After successfully fetching the character data, use array methods to create an HTML card for each character and append it to the cardContainer.
