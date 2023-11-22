@@ -1,17 +1,17 @@
-
-
-export function createCharacterCard(count) {
-
-  const cardSourceUrl = `${charactersFetched.results[count].url}`;
+export function createCharacterCard(count, charactersFetched) {
+  console.log("hello world", count, charactersFetched);
+  const cardSourceUrl = `${charactersFetched.results[count].image}`;
   const characterName = `${charactersFetched.results[count].name}`;
   const statusInfo = `${charactersFetched.results[count].status}`;
   const typeInfo = `${charactersFetched.results[count].type}`;
   const occurnessInfo = `${charactersFetched.results[count].episode.length}`;
+  console.log("img", cardSourceUrl);
+  //!destructure als import
+  const cardContainer = document.querySelector('[data-js="card-container"]');
+  let newCard = document.createElement("li");
+  newCard.classList.add("card");
 
-  let newCard;
-
-  newCard.innerHTML = `<li class="card">
-      <div class="card__image-container">
+  newCard.innerHTML = `<div class="card__image-container">
         <img
           class="card__image"
           src="${cardSourceUrl}"
@@ -29,9 +29,7 @@ export function createCharacterCard(count) {
           <dt class="card__info-title">Occurrences</dt>
           <dd class="card__info-description">${occurnessInfo}</dd>
         </dl>
-      </div>
-    </li>`;
+      </div>`;
 
-    cardContainer.prepend(newCard);
-
+  cardContainer.prepend(newCard);
 }
