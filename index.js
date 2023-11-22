@@ -37,8 +37,8 @@ console.log(
 );
 
 function twentyCards() {
-  result.forEach((card) => {
-    createCharacterCard(card);
+  charactersFetched.result.forEach((count) => {
+    createCharacterCard(count);
   });
 }
 
