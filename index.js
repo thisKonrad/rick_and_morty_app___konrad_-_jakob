@@ -10,14 +10,11 @@ const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('[data-js="pagination"]');
 
-// States
-const maxPage = 1;
-const page = 1;
-const searchQuery = "";
-let index = 1;
+let page = 1;
+
 //fetch API
 let charactersFetched;
-let fetchUrl = `https://rickandmortyapi.com/api/character/?page=${index}`;
+let fetchUrl = `https://rickandmortyapi.com/api/character/?page=${page}`;
 async function fetchCharacters(index) {
   try {
     const response = await fetch(fetchUrl);
@@ -28,18 +25,20 @@ async function fetchCharacters(index) {
   }
   return;
 }
-await fetchCharacters(index);
-console.log(
-  "exdata",
-  charactersFetched,
-  "card2",
-  charactersFetched.results[2].name
-);
+
+await fetchCharacters(page);
+
+// States
+const maxPage = charactersFetched.info.pages; //42
+
+const searchQuery = "";
+// let index = 1;
 
 const resultArray = charactersFetched.results;
 console.log("resultArray: ", resultArray);
 
 function twentyCards() {
+  cardContainer.innerHTML = "";
   resultArray.forEach((elem, i) => {
     console.log("inside twentyCrad", elem, i);
     createCharacterCard(i, charactersFetched);
