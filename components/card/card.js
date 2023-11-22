@@ -3,9 +3,9 @@
 export function createCharacterCard(count) {
   const cardSourceUrl = `${charactersFetched.results[count].url}`;
   const characterName = `${charactersFetched.results[count].name}`;
-  const statusInfo = `${state}`;
-  const typeInfo = `${type}`;
-  const occurnessInfo = `${occurness}`;
+  const statusInfo = `${charactersFetched.results[count].status}`;
+  const typeInfo = `${charactersFetched.results[count].type}`;
+  const occurnessInfo = `${charactersFetched.results[count].episode.length}`;
 
   cardContainer.innerHTML = `<li class="card">
       <div class="card__image-container">
