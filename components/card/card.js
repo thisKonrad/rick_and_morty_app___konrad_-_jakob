@@ -2,6 +2,8 @@
 
 export function createCharacterCard(count) {
 
+  console.log(count)
+
   const cardSourceUrl = `${charactersFetched.results[count].url}`;
   const characterName = `${charactersFetched.results[count].name}`;
   const statusInfo = `${charactersFetched.results[count].status}`;
