@@ -1,13 +1,13 @@
 
+
 export function createCharacterCard(count) {
+  const cardSourceUrl = `${charactersFetched.results[count].url}`;
+  const characterName = `${charactersFetched.results[count].name}`;
+  const statusInfo = `${state}`;
+  const typeInfo = `${type}`;
+  const occurnessInfo = `${occurness}`;
 
-    const cardSourceUrl = `${data[count]url}`;
-    const characterName = `${charName}`;
-    const statusInfo = `${state}`;
-    const typeInfo = `${type}`;
-    const occurnessInfo = `${occurness}`
-
-    cardContainer.innerHTML = `<li class="card">
+  cardContainer.innerHTML = `<li class="card">
       <div class="card__image-container">
         <img
           class="card__image"
@@ -29,4 +29,3 @@ export function createCharacterCard(count) {
       </div>
     </li>`;
 }
-
