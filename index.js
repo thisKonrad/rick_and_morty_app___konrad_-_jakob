@@ -36,9 +36,13 @@ console.log(
   charactersFetched.results[2].name
 );
 
+const resultArray = charactersFetched.results;
+console.log("resultArray: ", resultArray);
+
 function twentyCards() {
-  charactersFetched.result.forEach((count) => {
-    createCharacterCard(count);
+  resultArray.forEach((elem, i) => {
+    console.log("inside twentyCrad", elem, i);
+    createCharacterCard(i, charactersFetched);
   });
 }
 
