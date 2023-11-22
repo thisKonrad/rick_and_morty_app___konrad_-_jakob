@@ -1,6 +1,7 @@
-export function createCharacterCard() {
 
-    const cardSourceUrl = `${cardSrc}`;
+export function createCharacterCard(count) {
+
+    const cardSourceUrl = `${data[count]url}`;
     const characterName = `${charName}`;
     const statusInfo = `${state}`;
     const typeInfo = `${type}`;
