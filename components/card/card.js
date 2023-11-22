@@ -1,13 +1,16 @@
 
 
 export function createCharacterCard(count) {
+
   const cardSourceUrl = `${charactersFetched.results[count].url}`;
   const characterName = `${charactersFetched.results[count].name}`;
   const statusInfo = `${charactersFetched.results[count].status}`;
   const typeInfo = `${charactersFetched.results[count].type}`;
   const occurnessInfo = `${charactersFetched.results[count].episode.length}`;
 
-  cardContainer.innerHTML = `<li class="card">
+  let newCard;
+
+  newCard.innerHTML = `<li class="card">
       <div class="card__image-container">
         <img
           class="card__image"
@@ -28,4 +31,7 @@ export function createCharacterCard(count) {
         </dl>
       </div>
     </li>`;
+
+    cardContainer.prepend(newCard);
+
 }
