@@ -1,16 +1,15 @@
-function createPagination(){
+export function createPagination(){
 
     const main = document.querySelector('main');
     const navBar = document.createElement('nav');
+    navBar.classList.add('class="navigation"');
+    navBar.setAttribute('data-js','navigation')
+
     const pagination = document.createElement('span');
     pagination.classList.add('navigation__pagination');
-    pagination.dataset.add('data-js="pagination');
+    pagination.setAttribute('data-js','pagination');
+    pagination.innerText =`${page}/${42}`;
 
-    navBar.innerHTML = 
-    `<nav class="navigation" data-js="navigation">
-    <span class="navigation__pagination" data-js="pagination">1 / 1</span>
-    </nav>`;
-
-    prevButton.insertAdjacentElement('afterbegin',pagination);
+    navBar.append(pagination);
 
 };

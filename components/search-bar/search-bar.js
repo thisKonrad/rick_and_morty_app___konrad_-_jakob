@@ -1,6 +1,6 @@
 /* :::: search bar :::: */
 
-function createSearchBar(){
+export function createSearchBar(onsubmit){
 
     const main = document.querySelector('main');
 

@@ -1,13 +1,14 @@
 /* :::: button :::: */
-function createButton(){
+export function createButton(onclick){
    
     const prevButton = document.createElement('button');
+    prevButton.classList.add('button button--prev');
+    prevButton.setAttribute('data-js','button-prev');
+    
     const nextButton = document.createElement('button');
+    nextButton.classList.add('class="button button--next');
+    nextButton.setAttribute('data-js', 'button-next');
 
-    prevButton.innerHtml =
-    `<button class="button button--prev" data-js="button-prev">previous</button>`;
-    nextButton.innerHtml = 
-    `<button class="button button--next" data-js="button-next">next</button>`;
-
-
-}
+    navBar.insertAdjacentElement('afterbegin', prevButton);
+    navBar.insertAdjacentElement('beforeend', nextButton);
+};
