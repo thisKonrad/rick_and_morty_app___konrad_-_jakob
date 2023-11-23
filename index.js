@@ -1,4 +1,8 @@
 import { createCharacterCard } from "./components/card/card.js";
+// import {
+//   searchBarUpdate,
+//   searchBarButton,
+// } from "./components/search-bar/createSearchBar.js";
 
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -14,6 +18,7 @@ let page = 1;
 let maxPage;
 
 let charactersFetched;
+// -------------------------
 
 async function fetchCharacters(index) {
   console.log("hi");
@@ -66,7 +71,46 @@ prevButton.addEventListener("click", () => {
 // States
 // const maxPage = charactersFetched.info.pages; //42
 
-const searchQuery = "";
+let searchQuery = "";
+
+let searchBarInput = document.querySelector(".search-bar__input");
+const searchBarButton = document.querySelector(".search-bar__button");
+
+//let searchQuery = "";
+
+searchBarButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log("submit");
+  searchBarUpdate();
+});
+
+function searchBarUpdate() {
+  searchQuery = searchBarInput.value;
+  console.log("Input SearchQuery: ", searchQuery);
+
+  fetchNames(searchQuery);
+
+  async function fetchNames(names) {
+    try {
+      let fetchUrl = `https://rickandmortyapi.com/api/character/?name=${searchQuery}`;
+      const response = await fetch(fetchUrl);
+      const data = await response.json();
+      const searchFetched = data;
+      const searchResults = searchFetched.results;
+      console.log(data);
+      //let searchFetched = data;
+      cardContainer.innerHTML = "";
+
+      searchResults.forEach((elem, i) => {
+        // console.log("inside twentyCard", elem, i);
+        cardContainer.append(createCharacterCard(i, searchFetched));
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    return;
+  }
+}
 
 // const resultArray = charactersFetched.results;
 // console.log("resultArray: ", resultArray);

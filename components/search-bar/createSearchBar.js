@@ -1,38 +1,34 @@
 /* :::: search bar :::: */
 
 const searchBar = document.querySelector('[data-js="search-bar"]');
-const searchBarInput = ('.search-bar__input');
-const searchBarButton = ('.search-bar__button');
+const searchBarInput = document.querySelector(".search-bar__input");
+const searchBarButton = document.querySelector(".search-bar__button");
 
-let searchQuery = "";
+//let searchQuery = "";
 
-searchBarButton.addEventListener('submit',(e)=> {
-
-    e.preventDefault();
-    searchBarUpdate()
-
+searchBarButton.addEventListener("submit", (e) => {
+  e.preventDefault();
+  searchBarUpdate();
 });
 
-function searchBarUpdate(){
-   
-    searchQuery = searchBarInput;
-    console.log("Input SearchQuery: ", searchQuery,);
+function searchBarUpdate() {
+  searchQuery = searchBarInput.value;
+  console.log("Input SearchQuery: ", searchQuery);
 
-    let fetchUrl = `https://rickandmortyapi.com/api/character/&name=${searchQuery}`;
+  fetchNames(searchQuery);
 
-    fetchNames(names)
-
-    async function fetchNames(names) {
+  async function fetchNames(names) {
     try {
-        const response = await fetch(fetchUrl);
-        const data = await response.json();
-        charactersFetched = data;
+      let fetchUrl = `https://rickandmortyapi.com/api/character/&name=${searchQuery}`;
+      const response = await fetch(fetchUrl);
+      const data = await response.json();
+      console.log(data);
+      //let searchFetched = data;
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-        return;
-    }
-};
+    return;
+  }
+}
 
-
-export { searchBarUpdate, searchBarButton};
+export { searchBarUpdate, searchBarButton };
