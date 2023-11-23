@@ -1,16 +1,6 @@
-<<<<<<< HEAD
-
-
-export function createCharacterCard(count) {
-
-  console.log(count)
-
-  const cardSourceUrl = `${charactersFetched.results[count].url}`;
-=======
 export function createCharacterCard(count, charactersFetched) {
   // console.log("hello world", count, charactersFetched);
   const cardSourceUrl = `${charactersFetched.results[count].image}`;
->>>>>>> ffe83000ca6eafade9f4f70daf9233abda8466da
   const characterName = `${charactersFetched.results[count].name}`;
   const statusInfo = `${charactersFetched.results[count].status}`;
   const typeInfo = `${charactersFetched.results[count].type}`;
