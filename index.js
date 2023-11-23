@@ -1,23 +1,32 @@
 import { createCharacterCard } from "./components/card/card.js";
-// import {
-//   searchBarUpdate,
-//   searchBarButton,
-// } from "./components/search-bar/createSearchBar.js";
+import { createSearchBar } from "./components/search-bar/search-bar.js";
+import { createPagination } from "./components/nav-pagination/nav-pagination.js";
+import { createButton } from "./components/nav-button/nav-button.js";
 
-const cardContainer = document.querySelector('[data-js="card-container"]');
+
+/* :::: global variables ::::: */
+
+//let main = document.querySelector('main');
+const cardContainer = document.querySelector(
+  '[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
   '[data-js="search-bar-container"]'
 );
-const searchBar = document.querySelector('[data-js="search-bar"]');
-const navigation = document.querySelector('[data-js="navigation"]');
+
+//const searchBar = document.querySelector('[data-js="search-bar"]');
+//const navigation = document.querySelector('[data-js="navigation"]');
 const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
-const pagination = document.querySelector('[data-js="pagination"]');
+const pagination = document.querySelector('.navigation__pagination');
 
 let page = 1;
 let maxPage;
-
 let charactersFetched;
+
+createSearchBar();
+//createPagination();
+//createButton(); 
+
 // -------------------------
 
 async function fetchCharacters(index) {
@@ -30,7 +39,7 @@ async function fetchCharacters(index) {
     charactersFetched = data;
     maxPage = charactersFetched.info.pages;
     const resultArray = charactersFetched.results;
-
+    pagination.innerText = `${page}/${maxPage}`;
     cardContainer.innerHTML = "";
 
     resultArray.forEach((elem, i) => {
@@ -42,8 +51,11 @@ async function fetchCharacters(index) {
   }
   return;
 }
-pagination.innerText = `${page}/${42}`;
+
 fetchCharacters(page);
+
+//-----------------------------------------------------------------------//
+
 
 nextButton.addEventListener("click", () => {
   if (page === maxPage) {
@@ -68,15 +80,12 @@ prevButton.addEventListener("click", () => {
     pagination.innerText = `${page}/${maxPage}`;
   }
 });
-// States
-// const maxPage = charactersFetched.info.pages; //42
+
 
 let searchQuery = "";
 
 let searchBarInput = document.querySelector(".search-bar__input");
 const searchBarButton = document.querySelector(".search-bar__button");
-
-//let searchQuery = "";
 
 searchBarButton.addEventListener("click", (e) => {
   e.preventDefault();
@@ -98,11 +107,9 @@ function searchBarUpdate() {
       const searchFetched = data;
       const searchResults = searchFetched.results;
       console.log(data);
-      //let searchFetched = data;
       cardContainer.innerHTML = "";
 
       searchResults.forEach((elem, i) => {
-        // console.log("inside twentyCard", elem, i);
         cardContainer.append(createCharacterCard(i, searchFetched));
       });
     } catch (error) {

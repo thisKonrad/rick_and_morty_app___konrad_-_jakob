@@ -19,14 +19,14 @@ body {
   font-family: var(--font-family);
   color: var(--color-primary);
   padding: 20px;
+  width: 100%;
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+ display: flex;
 }
 
 .title {
   padding: 10px 0;
+  text-align: center;
 }
