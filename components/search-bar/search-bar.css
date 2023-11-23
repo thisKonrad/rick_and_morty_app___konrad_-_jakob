@@ -5,19 +5,23 @@
 
 .search-bar {
   padding: 10px 20px;
-  background-color: var(--color-secondary);
+  /* background-color: var(--color-secondary); */
+  background-color: rgb(144, 201, 182);
   display: grid;
   grid-template-columns: 1fr 24px;
+  border-radius: 10px;
 }
 
 .search-bar__input {
   background-color: transparent;
   border: none;
   color: var(--color-primary);
+ 
 }
 
 .search-bar__button {
   border: none;
+  cursor: pointer;
   background-color: transparent;
 }
 

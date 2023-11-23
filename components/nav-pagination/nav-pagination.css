@@ -2,9 +2,12 @@
   height: 30px;
   display: grid;
   grid-template-columns: 100px 100px 100px;
+  margin: auto;
 }
 
 .navigation__pagination {
   display: grid;
   place-items: center;
+  color:rgb(0, 228, 152);
+  text-shadow: 0rem 0rem 8px rgb(0, 228, 152);
 }
