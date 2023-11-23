@@ -18,7 +18,7 @@ function searchBarUpdate(){
     searchQuery = searchBarInput;
     console.log("Input SearchQuery: ", searchQuery,);
 
-    let fetchUrl = `https://rickandmortyapi.com/api/character/?name=${searchQuery}`;
+    let fetchUrl = `https://rickandmortyapi.com/api/character/&name=${searchQuery}`;
 
     fetchNames(names)
 
