@@ -1,21 +1,14 @@
 import { createCharacterCard } from "./components/card/card.js";
 import { createSearchBar } from "./components/search-bar/search-bar.js";
 import { createPagination } from "./components/nav-pagination/nav-pagination.js";
+//import { fetchCharacters } from "./components/events/character-fetch.js";
+
+createSearchBar();
+createPagination();
 
 
 /* :::: global variables ::::: */
-
-//let main = document.querySelector('main');
-
-/* const searchBarContainer = document.querySelector(
-  '[data-js="search-bar-container"]'
-); */
-
-//const searchBar = document.querySelector('[data-js="search-bar"]');
-//const navigation = document.querySelector('[data-js="navigation"]');
-
-const cardContainer = document.querySelector(
-  '[data-js="card-container"]');
+const cardContainer = document.querySelector('[data-js="card-container"]');
 const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('.navigation__pagination');
@@ -23,16 +16,13 @@ const pagination = document.querySelector('.navigation__pagination');
 let page = 1;
 let maxPage;
 let charactersFetched;
-
-createSearchBar();
-//createPagination()
  
-/* ::: Character Function::: */
 
+/* ::: Character Function::: */
 async function fetchCharacters(index) {
 
   try {
-    let fetchUrl = `https://rickandmortyapi.com/api/character/?page=${page}`;
+    let fetchUrl = `https://rickandmortyapi.com/api/character/?page=${index}`;
     const response = await fetch(fetchUrl);
     const data = await response.json();
     charactersFetched = data;
@@ -48,12 +38,12 @@ async function fetchCharacters(index) {
     console.log(error);
   }
   return;
-}
+} 
+
 
 fetchCharacters(page);
 
-/*::::::: Event_Listeners ::::::*/
-
+/*::::::: Navbar Button Event_Listeners ::::::*/
 nextButton.addEventListener("click", () => {
   if (page === maxPage) {
     page = 1;
@@ -79,11 +69,10 @@ prevButton.addEventListener("click", () => {
     fetchCharacters(page);
     pagination.innerText = `${page}/${maxPage}`;
   }
-});
+});  
 
 
-/* ::: Search Bar::: */
-
+/* ::: Search Bar Function ::: */
 let searchQuery = "";
 
 let searchBarInput = document.querySelector(".search-bar__input");
@@ -95,7 +84,6 @@ searchBarButton.addEventListener("click", (e) => {
   searchBarUpdate();
 
 });
-
 
 
 /* :::Names Function::: */
