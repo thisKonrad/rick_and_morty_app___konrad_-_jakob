@@ -6,24 +6,28 @@ const searchBarButton = ('.search-bar__button');
 
 let searchQuery = "";
 
+searchBarButton.addEventListener('submit', searchBarUpdate);
+
 function searchBarUpdate(){
-    console.log("Input Search Bar: ", searchBarInput,);
+   
     searchQuery = searchBarInput;
-    
+    console.log("Input SearchQuery: ", searchQuery,);
+
+    let fetchUrl = `https://rickandmortyapi.com/api/character/?name=${searchQuery}`;
+
+    fetchNames(names)
+
+    async function fetchNames(names) {
+    try {
+        const response = await fetch(fetchUrl);
+        const data = await response.json();
+        charactersFetched = data;
+    } catch (error) {
+        console.log(error);
+    }
+        return;
+    }
 };
 
 
-let fetchUrl = `https://rickandmortyapi.com/api/character/?name=${searchQuery}`;
-async function fetchCharacters(index) {
-  try {
-    const response = await fetch(fetchUrl);
-    const data = await response.json();
-    charactersFetched = data;
-  } catch (error) {
-    console.log(error);
-  }
-  return;
-}
-
-
-searchBarButton.addEventListener('submit', searchBarUpdate);
+export { searchBarUpdate, searchBarButton};
