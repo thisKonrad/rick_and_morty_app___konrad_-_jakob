@@ -3,6 +3,8 @@ import { createSearchBar } from "./components/search-bar/search-bar.js";
 import { createPagination } from "./components/nav-pagination/nav-pagination.js";
 //import { fetchCharacters } from "./components/events/character-fetch.js";
 
+
+/* ::: create DOM Elements ::: */
 createSearchBar();
 createPagination();
 

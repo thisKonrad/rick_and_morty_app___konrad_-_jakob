@@ -2,7 +2,8 @@
   height: 30px;
   display: grid;
   grid-template-columns: 100px 100px 100px;
-  margin: auto;
+   /* top | right | bottom | left */
+   margin: 3rem auto 0.5rem auto;
 }
 
 .navigation__pagination {
