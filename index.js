@@ -1,20 +1,21 @@
 import { createCharacterCard } from "./components/card/card.js";
 import { createSearchBar } from "./components/search-bar/search-bar.js";
 import { createPagination } from "./components/nav-pagination/nav-pagination.js";
-import { createButton } from "./components/nav-button/nav-button.js";
 
 
 /* :::: global variables ::::: */
 
 //let main = document.querySelector('main');
-const cardContainer = document.querySelector(
-  '[data-js="card-container"]');
-const searchBarContainer = document.querySelector(
+
+/* const searchBarContainer = document.querySelector(
   '[data-js="search-bar-container"]'
-);
+); */
 
 //const searchBar = document.querySelector('[data-js="search-bar"]');
 //const navigation = document.querySelector('[data-js="navigation"]');
+
+const cardContainer = document.querySelector(
+  '[data-js="card-container"]');
 const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('.navigation__pagination');
@@ -24,13 +25,11 @@ let maxPage;
 let charactersFetched;
 
 createSearchBar();
-//createPagination();
-//createButton(); 
-
-// -------------------------
+//createPagination()
+ 
+/* ::: Character Function::: */
 
 async function fetchCharacters(index) {
-  console.log("hi");
 
   try {
     let fetchUrl = `https://rickandmortyapi.com/api/character/?page=${page}`;
@@ -43,7 +42,6 @@ async function fetchCharacters(index) {
     cardContainer.innerHTML = "";
 
     resultArray.forEach((elem, i) => {
-      // console.log("inside twentyCard", elem, i);
       cardContainer.append(createCharacterCard(i, charactersFetched));
     });
   } catch (error) {
@@ -54,8 +52,7 @@ async function fetchCharacters(index) {
 
 fetchCharacters(page);
 
-//-----------------------------------------------------------------------//
-
+/*::::::: Event_Listeners ::::::*/
 
 nextButton.addEventListener("click", () => {
   if (page === maxPage) {
@@ -69,6 +66,7 @@ nextButton.addEventListener("click", () => {
   }
 });
 
+
 prevButton.addEventListener("click", () => {
   if (page === 1) {
     page = maxPage;
@@ -81,6 +79,8 @@ prevButton.addEventListener("click", () => {
   }
 });
 
+
+/* ::: Search Bar::: */
 
 let searchQuery = "";
 
@@ -99,7 +99,9 @@ function searchBarUpdate() {
 
   fetchNames(searchQuery);
 
-  async function fetchNames(names) {
+
+/* :::Names Function::: */
+async function fetchNames(names) {
     try {
       let fetchUrl = `https://rickandmortyapi.com/api/character/?name=${searchQuery}`;
       const response = await fetch(fetchUrl);
@@ -117,24 +119,4 @@ function searchBarUpdate() {
     }
     return;
   }
-}
-
-// const resultArray = charactersFetched.results;
-// console.log("resultArray: ", resultArray);
-
-// function twentyCards() {
-// cardContainer.innerHTML = "";
-
-// // await fetchCharacters(page)
-// resultArray.forEach((elem, i) => {
-//   console.log("inside twentyCard", elem, i);
-//   cardContainer.append(createCharacterCard(i, charactersFetched));
-//   });
-// }
-
-// twentyCards();
-// Use your knowledge about fetching to get the first 20 characters from the API. You can find the correct API endpoint in the docs.
-// Import the createCharacterCard function.
-// After successfully fetching the character data, use array methods to create an HTML card for each character and append it to the cardContainer.
-// Make sure that the cardContainer is emptied every time new characters are fetched (HINT: you can use innerHTML = '' for that).
-// Call the function inside the index.js. Now you should see 20 cards in your app.
+};
