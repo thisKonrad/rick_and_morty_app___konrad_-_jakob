@@ -6,7 +6,12 @@ const searchBarButton = ('.search-bar__button');
 
 let searchQuery = "";
 
-searchBarButton.addEventListener('submit', searchBarUpdate);
+searchBarButton.addEventListener('submit',(e)=> {
+
+    e.preventDefault();
+    searchBarUpdate()
+
+});
 
 function searchBarUpdate(){
    
