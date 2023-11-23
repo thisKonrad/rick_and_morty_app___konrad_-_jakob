@@ -3,6 +3,11 @@
 @import "components/nav-button/nav-button.css";
 @import "components/nav-pagination/nav-pagination.css";
 
+@font-face {
+  font-family:'Rick';
+  src:  url('assets/rick_morty.woff') format('woff');
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,14 +24,31 @@ body {
   font-family: var(--font-family);
   color: var(--color-primary);
   padding: 20px;
-  width: 100%;
+  width: 100vw;
+  margin:auto;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(
+    rgb(0, 0, 0) 25vh,
+     rgb(0, 128, 0) 45vh,
+     rgb(0, 0, 0)65vh,
+     rgb(0, 128, 0));
+  background-repeat: none;
+  
 }
 
-main {
- display: flex;
-}
+/* main {
+  display:flex;
+} */
 
 .title {
+  margin: 1rem;
+  font-family: 'Rick';
+  font-size: 6rem;
+  font-weight: bolder;
+  letter-spacing: 1.2rem;
   padding: 10px 0;
   text-align: center;
+  color:rgb(0, 228, 152);
+  text-shadow: 0rem 0rem 8px rgb(0, 228, 152);
 }
