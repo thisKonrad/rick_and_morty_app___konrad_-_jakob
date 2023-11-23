@@ -64,6 +64,8 @@ nextButton.addEventListener("click", () => {
     fetchCharacters(page);
     pagination.innerText = `${page}/${maxPage}`;
   }
+
+
 });
 
 
@@ -88,32 +90,44 @@ let searchBarInput = document.querySelector(".search-bar__input");
 const searchBarButton = document.querySelector(".search-bar__button");
 
 searchBarButton.addEventListener("click", (e) => {
+
   e.preventDefault();
-  console.log("submit");
   searchBarUpdate();
+
 });
 
-function searchBarUpdate() {
-  searchQuery = searchBarInput.value;
-  console.log("Input SearchQuery: ", searchQuery);
-
-  fetchNames(searchQuery);
 
 
 /* :::Names Function::: */
-async function fetchNames(names) {
+function searchBarUpdate() {
+
+  searchQuery = searchBarInput.value;
+
+  fetchNames(searchQuery);
+
+  async function fetchNames(names) {
+
     try {
-      let fetchUrl = `https://rickandmortyapi.com/api/character/?name=${searchQuery}`;
+      let fetchUrl = `https://rickandmortyapi.com/api/character/?name=${names}`;
       const response = await fetch(fetchUrl);
       const data = await response.json();
       const searchFetched = data;
       const searchResults = searchFetched.results;
-      console.log(data);
+
+      console.log("Search Results:",searchResults);
+
       cardContainer.innerHTML = "";
+
+      if(searchResults.length >= 1){
+        page = 1;
+        maxPage = searchResults.length;
+        pagination.innerText = `${page}/${maxPage}`;
+      }
 
       searchResults.forEach((elem, i) => {
         cardContainer.append(createCharacterCard(i, searchFetched));
       });
+     
     } catch (error) {
       console.log(error);
     }
