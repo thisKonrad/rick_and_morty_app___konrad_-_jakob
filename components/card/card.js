@@ -31,5 +31,7 @@ export function createCharacterCard(count, charactersFetched) {
         </dl>
       </div>`;
 
-  cardContainer.append(newCard);
+  // cardContainer.append(newCard);
+
+  return newCard;
 }
