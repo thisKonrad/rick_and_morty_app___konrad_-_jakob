@@ -1,6 +1,6 @@
 /* :::: button :::: */
-export function createButton(){
-   // [data-js="button-prev"]
+
+/* export function createButton(){
 
     let main = document.querySelector('main');
 
@@ -25,4 +25,4 @@ export function createButton(){
 
     main.prepend(navBar);
 
-};
+}; */

@@ -1,12 +1,11 @@
 export function createCharacterCard(count, charactersFetched) {
-  // console.log("hello world", count, charactersFetched);
+ 
   const cardSourceUrl = `${charactersFetched.results[count].image}`;
   const characterName = `${charactersFetched.results[count].name}`;
   const statusInfo = `${charactersFetched.results[count].status}`;
   const typeInfo = `${charactersFetched.results[count].type}`;
   const occurnessInfo = `${charactersFetched.results[count].episode.length}`;
-  // console.log("img", cardSourceUrl);
-  //!destructure als import
+ 
   const cardContainer = document.querySelector('[data-js="card-container"]');
   let newCard = document.createElement("li");
   newCard.classList.add("card");
@@ -30,8 +29,6 @@ export function createCharacterCard(count, charactersFetched) {
           <dd class="card__info-description">${occurnessInfo}</dd>
         </dl>
       </div>`;
-
-  // cardContainer.append(newCard);
 
   return newCard;
 }
