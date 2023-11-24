@@ -17,7 +17,7 @@
 .card {
   width: 300px;
   height: 540px;
-  background-color: var(--color-secondary);
+/*   background-color: var(--color-secondary); */
   background-color: rgb(159, 161, 199);
   border: solid 4px rgb(28, 255, 28);
   border-radius: 8px;
@@ -47,4 +47,15 @@
 
 li {
   list-style: none;
+}
+
+.dead{
+ /*  width: 300px;
+  height: 540px; */
+  color:white;
+/*   background-color: var(--color-secondary); */
+  background-color: black;
+/*   border: solid 4px rgb(28, 255, 28);
+  border-radius: 8px;
+  box-shadow:0rem 0rem 1rem rgb(0, 228, 152); */
 }

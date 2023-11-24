@@ -15,9 +15,13 @@ const prevButton = document.querySelector('[data-js="button-prev"]');
 const nextButton = document.querySelector('[data-js="button-next"]');
 const pagination = document.querySelector('.navigation__pagination');
 
+let searchBarInput = document.querySelector(".search-bar__input");
+const searchBarButton = document.querySelector(".search-bar__button");
+
 let page = 1;
 let maxPage;
 let charactersFetched;
+let searchQuery = "";
  
 
 /* ::: Character Function::: */
@@ -36,12 +40,12 @@ async function fetchCharacters(index) {
     resultArray.forEach((elem, i) => {
       cardContainer.append(createCharacterCard(i, charactersFetched));
     });
+
   } catch (error) {
     console.log(error);
   }
   return;
-} 
-
+};
 
 fetchCharacters(page);
 
@@ -56,8 +60,6 @@ nextButton.addEventListener("click", () => {
     fetchCharacters(page);
     pagination.innerText = `${page}/${maxPage}`;
   }
-
-
 });
 
 
@@ -75,10 +77,6 @@ prevButton.addEventListener("click", () => {
 
 
 /* ::: Search Bar Function ::: */
-let searchQuery = "";
-
-let searchBarInput = document.querySelector(".search-bar__input");
-const searchBarButton = document.querySelector(".search-bar__button");
 
 searchBarButton.addEventListener("click", (e) => {
 
@@ -92,10 +90,12 @@ searchBarButton.addEventListener("click", (e) => {
 function searchBarUpdate() {
 
   searchQuery = searchBarInput.value;
-
   fetchNames(searchQuery);
 
-  async function fetchNames(names) {
+};
+
+
+async function fetchNames(names) {
 
     try {
       let fetchUrl = `https://rickandmortyapi.com/api/character/?name=${names}`;
@@ -104,9 +104,14 @@ function searchBarUpdate() {
       const searchFetched = data;
       const searchResults = searchFetched.results;
 
-      console.log("Search Results:",searchResults);
+      //maxPage = searchFetched.info.pages;
 
       cardContainer.innerHTML = "";
+
+    /*   if(searchResults.length >= 1){
+        page = 1;
+        pagination.innerText = `${page}/${maxPage}`;
+      } */
 
       if(searchResults.length >= 1){
         page = 1;
@@ -122,5 +127,4 @@ function searchBarUpdate() {
       console.log(error);
     }
     return;
-  }
 };
