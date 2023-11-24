@@ -25,7 +25,7 @@ let maxPage;
 let charactersFetched;
 
 createSearchBar();
-//createPagination()
+createPagination()
  
 /* ::: Character Function::: */
 
