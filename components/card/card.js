@@ -8,7 +8,13 @@ export function createCharacterCard(count, charactersFetched) {
  
   const cardContainer = document.querySelector('[data-js="card-container"]');
   let newCard = document.createElement("li");
-  newCard.classList.add("card");
+
+  if(statusInfo === 'Dead'){
+    newCard.classList.add("card");
+    newCard.classList.add('dead');
+  }else {
+    newCard.classList.add("card");
+  }
 
   newCard.innerHTML = `<div class="card__image-container">
         <img
